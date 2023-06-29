@@ -84,7 +84,8 @@ To begin the analysis, run the following command:
 ```bash
 perl BP-Tracer_Tax.pl -input /filename/clean.fq.list
 ```
-The `-input` parameter specifies a list of clean data files and their corresponding sample IDs. For example:
+The `-input` parameter specifies a clean.fq.list of clean data files and their corresponding sample IDs. (Pleas use the \tab)
+For example:
 ```
 T1	/PWD/T1.clean.1.fq.gz	/PWD/T1.clean.2.fq.gz
 T2	/PWD/T1.clean.1.fq.gz	/PWD/T2.clean.2.fq.gz
