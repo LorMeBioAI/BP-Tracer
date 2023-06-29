@@ -1,20 +1,10 @@
 # BP-Tracer: Species tracing of biopollutome
 
-- [[#Introduction|Introduction]]
-	- [[#Introduction#About the biopollutome|About the biopollutome]]
-	- [[#Introduction#Pipeline workflow|Pipeline workflow]]
-- [[#Installation|Installation]]
-	- [[#Installation#Installing with Conda|Installing with Conda]]
-	- [[#Installation#Manual Installation|Manual Installation]]
-- [[#Usage|Usage]]
-	- [[#Usage#1. Pathogenic bacteria detection|1. Pathogenic bacteria detection]]
-	- [[#Usage#2. hamrful gene analysis|2. hamrful gene analysis]]
-		- [[#2. hamrful gene analysis#Step 1|Step 1]]
-		- [[#2. hamrful gene analysis#Step 2|Step 2]]
-		- [[#2. hamrful gene analysis#Note|Note]]
-	- [[#Usage#2. HGT|2. HGT]]
-- [[#License|License]]
-- [[#Contact|Contact]]
+- [Introduction](#Introduction)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [License](#license)
+- [Contact](#contact)
 
 ## Introduction
 
