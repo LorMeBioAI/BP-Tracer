@@ -31,10 +31,10 @@ If you are using BP-Tracer in your research, please cite the following paper:
 
 
 ### About the biopollutome
-![[Biopollutome concept fianl2.pdf]]
+![biopollotome](BP-Tracer/attachment/biopolltome.png)
 ### Pipeline workflow
 
-![[BP-Tracer workflow final2 (2).pdf]]
+![workflow](BP-Tracer/attachment/workflow.png)
 
 ## Installation
 ### Installing with Conda
