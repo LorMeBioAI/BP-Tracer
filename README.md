@@ -31,10 +31,10 @@ If you are using BP-Tracer in your research, please cite the following paper:
 
 
 ### About the biopollutome
-![biopollotome](BP-Tracer/attachment/biopolltome.png)
+![biopollotome](https://github.com/LorMeBioAI/BP-Tracer/blob/main/attachment/biopolltome.png)
 ### Pipeline workflow
 
-![workflow](BP-Tracer/attachment/workflow.png)
+![workflow](https://github.com/LorMeBioAI/BP-Tracer/blob/main/attachment/workflow.png)
 
 ## Installation
 ### Installing with Conda
