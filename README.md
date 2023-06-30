@@ -1,10 +1,22 @@
 # BP-Tracer: Species tracing of biopollutome
 
-- [Introduction](#Introduction)
-- [Installation](#Installation)
-- [Usage](#Usage)
-- [License](#license)
-- [Contact](#contact)
+* 1. [Introduction](#Introduction)
+	* 1.1. [About the biopollutome](#Aboutthebiopollutome)
+	* 1.2. [Pipeline workflow](#Pipelineworkflow)
+* 2. [Installation](#Installation)
+	* 2.1. [Installing with Conda](#InstallingwithConda)
+	* 2.2. [Manual Installation](#ManualInstallation)
+	* 2.3. [Software requirements](#Softwarerequirements)
+	* 2.4. [Database requirements](#Databaserequirements)
+* 3. [Usage](#Usage)
+	* 3.1. [1. Pathogenic bacteria detection](#Pathogenicbacteriadetection)
+	* 3.2. [2. hamrful gene analysis](#hamrfulgeneanalysis)
+		* 3.2.1. [Step 1](#Step1)
+		* 3.2.2. [Step 2](#Step2)
+		* 3.2.3. [Note](#Note)
+	* 3.3. [2. HGT](#HGT)
+* 4. [License](#License)
+* 5. [Contact](#Contact)
 
 ## Introduction
 
