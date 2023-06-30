@@ -69,11 +69,24 @@ cd BP-Tracer
 
 ```
 
-### Download supporting databases
+### Software requirements
 
-- Please run `download.sh` to download and extract larger data files that cannot be hosted in github.
+* python=2.7.18
+* blast=2.12.0
+* diamond=0.9.24
+* bowtie2
+* kraken2=2.1.2
+* minimap2
+* samtools
+* waafle=0.1.0
 
-BP-Tracer comes with a detailed user manual located in the `doc/` directory. Please read the manual before running the pipeline.
+### Database requirements
+BP-Tracer requires three supporting databases built from species-level pangenomes
+* [PGtax](http://) (98 GB), **a K-mer indexed database** for the kraken2-adapted taxonomic profiling
+* [PGfunc](http://) (1GB), **a Species-functional gene database** containing the harmful genes and their reservoir host species information
+* [PGtrans](http://) (45GB), **a BLAST-formatted nucleotide sequence database** for HGT (WAAFLE requires)
+> Please run `download.sh` to download and extract larger data files that cannot be hosted in github.
+
 
 ## Usage
 
@@ -133,7 +146,7 @@ If you need to perform host species correction for multiple host organisms, you 
 
 ### 2. HGT
 
-BP-Tracer HGT is an extension of BP-Tracer that utilizes WAAFLE to analyze horizontal gene transfer (HGT) events in metagenomic assembly sequences.
+BP-Tracer HGT is an extension of BP-Tracer that utilizes WAAFLE( http://huttenhower.sph.harvard.edu/waafle) to analyze horizontal gene transfer (HGT) events in metagenomic assembly sequences.
 
 To use BP-Tracer HGT, run the following command:
 
