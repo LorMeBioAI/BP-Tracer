@@ -93,10 +93,13 @@ cd BP-Tracer
 
 ### Database requirements
 BP-Tracer requires three supporting databases built from species-level pangenomes
-* [PGtax](http://) (98 GB), **a K-mer indexed database** for the kraken2-adapted taxonomic profiling
-* [PGfunc](http://) (1GB), **a Species-functional gene database** containing the harmful genes and their reservoir host species information
-* [PGtrans](http://) (45GB), **a BLAST-formatted nucleotide sequence database** for HGT (WAAFLE requires)
-> Please run `download.sh` to download and extract larger data files that cannot be hosted in github.
+You can download the databases from the BaiduNetDish. Here's the translation with the additional context:
+**[Link](https://pan.baidu.com/s/1Gjnduznpz7iK_yLq6tuO8w). Password: 1234**
+Note: You can download the files through this link, shared by a Baidu Netdisk Super Member V6.
+* [PGtax] (98 GB), **a K-mer indexed database** for the kraken2-adapted taxonomic profiling
+* [PGfunc] (1GB), **a Species-functional gene database** containing the harmful genes and their reservoir host species information
+* [PGtrans] (45GB), **a BLAST-formatted nucleotide sequence database** for HGT (WAAFLE requires)
+
 
 
 ## Usage
