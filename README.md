@@ -41,19 +41,6 @@ If you are using BP-Tracer in your research, please cite the following paper:
 ![workflow](https://github.com/LorMeBioAI/BP-Tracer/blob/main/attachment/workflow.png)
 **Overview of BP-Tracer.** **(a)** Pangenomes construction. A total of 206,876 genomes were obtained from the Bacteria NCBI RefSeq database to construct the species-level genome clusters. Then, species-level pangenome ORFs were constructed by predicting genes from genome clusters and clustering them at a 95% similarity threshold. (see Methods and Supplementary Tables 1-2). **(b)** Databases and pipeline construction. PGtax, PGfunc, and PGtrans databases were constructed based on the pangenome ORFs. These databases were then integrated into different functional modules, which were used to implement pathogen detection, harmful gene analysis, and horizontal gene transfer (HGT) event detection. The technical route, database, and output results of each module are represented with the same colors: pink, purple, and blue, respectively. **(c)** Pipeline input. BP-Tracer requires metagenomic reads as input to achieve pathogen detection and analysis of gene types and hosts. Contig sequences are required as input to achieve pathogen HGT detection. (d) Pipeline output. Including profiles of pathogenic bacteria and other species, profiles of gene types, subtypes and host species, and a list of HGT events including pathogens.
 ## Installation
-### Installing with Conda
-
-BP-Tracer can be installed using conda. 
-
-```shell
-# 1. create a new environment and activate it
-conda create -n bp_tracer perl
-conda activate bp_tracer
-
-# 2. use the following command to install BP-Tracer
-conda install -c bioconda bp-tracer
-```
-
 ### Manual Installation
 
 BP-Tracer can also be installed manually. To do so, first clone the BP-Tracer repository:
@@ -72,6 +59,8 @@ git clone https://github.com/LorMeBioAI/BP-Tracer
 * minimap2
 * samtools
 * waafle=0.1.0
+* numpy=1.26.4
+* pandas=2.2.2
 
 ### Database requirements
 BP-Tracer requires three supporting databases built from species-level pangenomes
@@ -108,8 +97,20 @@ T3	/PWD/T1.clean.1.fq.gz	/PWD/T3.clean.2.fq.gz
 
 ```
 
-1. Submit all `S0.1` scripts to obtain all species abundance tables
+1. Submit all `S0.1.*` scripts to obtain all species abundance tables
 2. Submit `S0.2.tax.sh` to merge the abundance tables for all samples
+```bash
+# Batch submit task scripts; you can also submit them manually if preferred
+for script in S0.1.* ; do
+    echo -e "sh $script 1>o.$script 2>e.$script" >> S0.1.allwork.sh
+done
+
+# Execute all task scripts
+nohup sh S0.1.allwork.sh &
+
+# Execute the merge script
+nohup sh S0.2.tax.sh &
+```
 
 ### 2. hamrful gene analysis
 
