@@ -69,8 +69,6 @@ Then, navigate to the BP-Tracer directory and run the installation script:
 ```shell
 bashCopy code
 cd BP-Tracer
-./install.sh
-
 ```
 
 BP-Tracer requires a Unix-like operating system and Perl 5.16 or higher. To install BP-Tracer, simply clone this repository and run the installation script:
