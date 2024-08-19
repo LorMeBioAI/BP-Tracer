@@ -129,6 +129,26 @@ After running the command, a `shell` folder containing analysis scripts will be 
 1. Submit all `S1.ARG*.sh` 
 2. Submit all `S2.MGE.*sh`, `S2.MRG.*sh`, and `S2.VFDB.*sh` 
 
+```bash
+# Batch submit ARG scripts
+for script in S1.ARG*.sh ; do
+    echo -e "sh $script 1>o.$script 2>e.$script" >> S1.ARG.allwork.sh
+done
+# Execute all ARG scripts
+nohup sh S1.ARG.allwork.sh &
+
+# Batch submit MGE, MRG, and VFDB scripts
+for script in S2.MGE.*sh S2.MRG.*sh S2.VFDB.*sh ; do
+    echo -e "sh $script 1>o.$script 2>e.$script" >> S2.Gene.allwork.sh
+done
+# Execute all MGE, MRG, and VFDB scripts
+nohup sh S2.Gene.allwork.sh &
+
+```
+
+
+
+
 #### Step 2
 
 After the S1 and S2 scripts have been executed, run the following command:
@@ -167,6 +187,15 @@ T3	/PWD/T1.contig.fa
 After running the command, a `shell` folder containing analysis scripts will be generated in the `filename` folder. To continue the analysis, enter the `shell` folder and:
 
 1. Submit all `HGT*` scripts
+```bash
+# Batch submit HGT task scripts; you can also submit them manually if preferred
+for script in S01.1.T*.HGT.sh ; do
+    echo -e "sh $script 1>o.$script 2>e.$script" >> S01.1.allwork.sh
+done
+
+# Execute all HGT task scripts
+nohup sh S01.1.allwork.sh &
+```
 
 ---
 
