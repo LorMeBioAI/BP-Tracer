@@ -165,7 +165,7 @@ BP-Tracer HGT is an extension of BP-Tracer that utilizes WAAFLE( http://huttenho
 To use BP-Tracer HGT, run the following command:
 
 ```bash
-perl BP-Tracer_HGT.pl -input /filename/contig.fq.list
+perl BP-Tracer_HGT.py --file /filename/contig.fq.list --pwd ./
 ```
 
 The `-input` parameter specifies a list of contig files in FASTQ format. For example:
