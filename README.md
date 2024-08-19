@@ -1,25 +1,15 @@
 # BP-Tracer: Species tracing of biopollutome
+
+## Contact
 ### **New Version of BP-Tracker is currently being updated, Please wait!**
 This is the test version for submission and review. We will conduct major updates to the software based on the reviewers' feedback.
+We are trying to recompy the Perl code into Python based on the reviewers' suggestions to facilitate maintenance.
 If you would like to know more about BP-Tracer, please leave a message under the Issues section or email us [yaozhongzyz@163.com|gjiang@njau.edu.cn]
 
 * 1. [Introduction](#Introduction)
-	* 1.1. [About the biopollutome](#Aboutthebiopollutome)
-	* 1.2. [Pipeline workflow](#Pipelineworkflow)
 * 2. [Installation](#Installation)
-	* 2.1. [Installing with Conda](#InstallingwithConda)
-	* 2.2. [Manual Installation](#ManualInstallation)
-	* 2.3. [Software requirements](#Softwarerequirements)
-	* 2.4. [Database requirements](#Databaserequirements)
 * 3. [Usage](#Usage)
-	* 3.1. [1. Pathogenic bacteria detection](#Pathogenicbacteriadetection)
-	* 3.2. [2. hamrful gene analysis](#hamrfulgeneanalysis)
-		* 3.2.1. [Step 1](#Step1)
-		* 3.2.2. [Step 2](#Step2)
-		* 3.2.3. [Note](#Note)
-	* 3.3. [2. HGT](#HGT)
-* 4. [License](#License)
-* 5. [Contact](#Contact)
+
 
 ## Introduction
 
@@ -72,8 +62,8 @@ You can download the databases from the BaiduNetDish. Here's the translation wit
 * [PGtrans] (45GB), **a BLAST-formatted nucleotide sequence database** for HGT (WAAFLE requires)
 
 ```bash
-# Then you have to use `tar -zxcf` to unzip the file in BP-Tracer document.
-cd /PWD/BP-Tracer
+# Unzip the files in the BP-Tracer directory
+cd /your_soft_dir/BP-Tracer
 tar -zxcf PGfunc.tar.gz ./
 tar -zxcf PGtax.tar.gz ./
 tar -zxcf PGtrans.tar.gz ./
@@ -81,15 +71,16 @@ tar -zxcf PGtrans.tar.gz ./
 
 ## Usage
 
-### 1. Pathogenic bacteria detection
+### 1. Step 1
 
-To begin the analysis, run the following command:
+Start the analysis with the following command:
 
 ```bash
-perl BP-Tracer_Tax.pl -input /filename/clean.fq.list
+cd /your_work_dir/
+perl BP-Tracer_Gene1.pl -input /filename/clean.fq.list
 ```
-The `-input` parameter specifies a clean.fq.list of clean data files and their corresponding sample IDs. (Pleas use the \tab)
-For example:
+
+The -input parameter should specify a list of clean data files and their corresponding sample IDs in clean.fq.list, e.g.:
 ```
 T1	/PWD/T1.clean.1.fq.gz	/PWD/T1.clean.2.fq.gz
 T2	/PWD/T1.clean.1.fq.gz	/PWD/T2.clean.2.fq.gz
@@ -97,8 +88,10 @@ T3	/PWD/T1.clean.1.fq.gz	/PWD/T3.clean.2.fq.gz
 
 ```
 
+#### Obtain microbiome profiles
 1. Submit all `S0.1.*` scripts to obtain all species abundance tables
 2. Submit `S0.2.tax.sh` to merge the abundance tables for all samples
+
 ```bash
 # Batch submit task scripts; you can also submit them manually if preferred
 for script in S0.1.* ; do
@@ -112,19 +105,7 @@ nohup sh S0.1.allwork.sh &
 nohup sh S0.2.tax.sh &
 ```
 
-### 2. hamrful gene analysis
-
-BP-Tracer is designed to work with raw metagenomic sequencing data. To run the pipeline, use the following command:
-
-#### Step 1
-
-To begin the analysis, run the following command:
-
-```bash
-perl BP-Tracer_Gene1.pl -input /filename/clean.fq.list
-```
-
-After running the command, a `shell` folder containing analysis scripts will be generated in the `filename` folder. To continue the analysis, enter the `shell` folder and:
+#### Harmful Gene Analysis
 
 1. Submit all `S1.ARG*.sh` 
 2. Submit all `S2.MGE.*sh`, `S2.MRG.*sh`, and `S2.VFDB.*sh` 
@@ -147,28 +128,38 @@ nohup sh S2.Gene.allwork.sh &
 ```
 
 
+### Step 2
 
-
-#### Step 2
-
-After the S1 and S2 scripts have been executed, run the following command:
+After executing the S1 and S2 scripts, run the following command:
 
 ```bash
+cd /your_work_dir/
 perl BP-Tracer_Gene2.pl
 
 ```
-
+#### Obtain Gene Type and Host Profiles
 After running the command, the `S3.*.sh` and `S4.sh` scripts will be updated in the `shell` folder. To continue the analysis, enter the `shell` folder and:
 
 1. Submit all `S3.*.sh` scripts
 2. Submit the `S4.sh` script to obtain the ARG, MGE, MRG, and VF profiles
 
-#### Note
+```bash
+cd shell
 
-If you need to perform host species correction for multiple host organisms, you need obtain the species abundance table before running the `S4.sh` script.
+# Batch submit S3.*.sh scripts
+for script in S3.*.sh ; do
+    echo -e "sh $script 1>o.$script 2>e.$script" >> S3.allwork.sh
+done
+# Execute all S3.*.sh scripts
+nohup sh S3.allwork.sh &
 
-### 2. HGT
+# Submit the S4.sh script to obtain profiles
+nohup sh S4.sh &
+```
 
+
+### Step 3
+#### Obtain HGT Profiles
 BP-Tracer HGT is an extension of BP-Tracer that utilizes WAAFLE( http://huttenhower.sph.harvard.edu/waafle) to analyze horizontal gene transfer (HGT) events in metagenomic assembly sequences.
 
 To use BP-Tracer HGT, run the following command:
@@ -188,6 +179,8 @@ After running the command, a `shell` folder containing analysis scripts will be 
 
 1. Submit all `HGT*` scripts
 ```bash
+cd shell
+
 # Batch submit HGT task scripts; you can also submit them manually if preferred
 for script in S01.1.T*.HGT.sh ; do
     echo -e "sh $script 1>o.$script 2>e.$script" >> S01.1.allwork.sh
@@ -196,13 +189,6 @@ done
 # Execute all HGT task scripts
 nohup sh S01.1.allwork.sh &
 ```
-
 ---
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://chat.openai.com/chat/LICENSE) file for details.
-
-## Contact
-
-For any questions or issues regarding BP-Tracer, please contact us at [yaozhongzyz@stu.njau.edu.cn](notion://www.notion.so/yaozhongzyz@stu.njau.edu.cn).
