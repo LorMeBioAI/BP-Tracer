@@ -75,14 +75,20 @@ git clone https://github.com/LorMeBioAI/BP-Tracer
 
 ### Database requirements
 BP-Tracer requires three supporting databases built from species-level pangenomes
-You can download the databases from the BaiduNetDish. Here's the translation with the additional context:
+You can download the databases from the BaiduNetDish. Here's the translation with the additional link:
 **[Link](https://pan.baidu.com/s/1Gjnduznpz7iK_yLq6tuO8w). Password: 1234**
-Note: You can download the files through this link, shared by a Baidu Netdisk Super Member V6.
+
 * [PGtax] (98 GB), **a K-mer indexed database** for the kraken2-adapted taxonomic profiling
 * [PGfunc] (1GB), **a Species-functional gene database** containing the harmful genes and their reservoir host species information
 * [PGtrans] (45GB), **a BLAST-formatted nucleotide sequence database** for HGT (WAAFLE requires)
 
-
+```bash
+# Then you have to use `tar -zxcf` to unzip the file in BP-Tracer document.
+cd /PWD/BP-Tracer
+tar -zxcf PGfunc.tar.gz ./
+tar -zxcf PGtax.tar.gz ./
+tar -zxcf PGtrans.tar.gz ./
+```
 
 ## Usage
 
