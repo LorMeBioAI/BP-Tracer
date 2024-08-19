@@ -36,6 +36,7 @@ If you are using BP-Tracer in your research, please cite the following paper:
 BP-Tracer can also be installed manually. To do so, first clone the BP-Tracer repository:
 
 ```shell
+cd /your_soft_dir
 git clone https://github.com/LorMeBioAI/BP-Tracer
 ```
 
