@@ -1,5 +1,7 @@
 # BP-Tracer: Species tracing of biopollutome
 ### **New Version of BP-Tracker is currently being updated, Please wait!**
+This is the test version for submission and review. We will conduct major updates to the software based on the reviewers' feedback.
+If you would like to know more about BP-Tracer, please leave a message under the Issues section or email us [yaozhongzyz@163.com|gjiang@njau.edu.cn]
 
 * 1. [Introduction](#Introduction)
 	* 1.1. [About the biopollutome](#Aboutthebiopollutome)
@@ -25,12 +27,8 @@ We presented a novel pipeline called BP-Tracer, a metagenomic analysis pipeline 
 Analysing the biopollutome, which refers to the pathogenic bacterial hosts of harmful genes, is the core function of the pipeline. This function depends on PGfunc, a species-functional gene database containing information on gene types and their corresponding species hosts, **which was constructed from 14,051 species-level pangenomes** (PG). This database enables users to comprehensively and quantitatively analyse the types and host sources (including pathogenic bacteria) of harmful genes, including ARGs, MGEs, MRGs, and VFs, from multiple perspectives using a large amount of metagenomic read data and generate corresponding profiles of gene types and hosts.
 
 If you are using BP-Tracer in your research, please cite the following paper:
-> BP-tracer: A metagenomic pipeline for tracing the multifarious biopollutome
+> BP-tracer: A metagenomic pipeline for tracing the multifarious biopollutome (still under review)
 > Yaozhong Zhang & Gaofei Jiang
-> 
-> *XXXX* (2023)
-> doi: [XXXX/XXXX-XXX-XXX-X](https://)
-> 
 
 
 ### About the biopollutome
@@ -61,23 +59,7 @@ conda install -c bioconda bp-tracer
 BP-Tracer can also be installed manually. To do so, first clone the BP-Tracer repository:
 
 ```shell
-git clone <https://github.com/LorMeBioAI/BP-Tracer.git>
-```
-
-Then, navigate to the BP-Tracer directory and run the installation script:
-
-```shell
-bashCopy code
-cd BP-Tracer
-```
-
-BP-Tracer requires a Unix-like operating system and Perl 5.16 or higher. To install BP-Tracer, simply clone this repository and run the installation script:
-
-```shell
-git clone <https://github.com/LorMeBioAI/BP-Tracer.git>
-cd BP-Tracer
-./install.sh
-
+git clone https://github.com/LorMeBioAI/BP-Tracer
 ```
 
 ### Software requirements
